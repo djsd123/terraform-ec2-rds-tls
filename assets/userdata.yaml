@@ -1,0 +1,28 @@
+#cloud-config
+repo_update: true
+repo_upgrade: all
+
+write_files:
+  - path: /etc/yum.repos.d/pgdg.repo
+    permissions: 0644
+    owner: root
+    content: |
+      [pgdg13]
+      name=PostgreSQL 13 for RHEL/CentOS 7 - x86_64
+      baseurl=https://download.postgresql.org/pub/repos/yum/13/redhat/rhel-7-x86_64
+      enabled=1
+      gpgcheck=0
+
+runcmd:
+
+  # update
+  - echo "Starting CloudInit userdata"
+  - yum update -y
+
+  # install tools
+  - amazon-linux-extras install -y epel
+  - yum install postgresql13 -y
+  - curl https://download.oracle.com/otn_software/linux/instantclient/217000/oracle-instantclient-basic-21.7.0.0.0-1.el8.x86_64.rpm --output instant-client.rpm
+  - rpm -i instant-client.rpm
+  - curl https://download.oracle.com/otn_software/linux/instantclient/217000/oracle-instantclient-sqlplus-21.7.0.0.0-1.el8.x86_64.rpm --output instant-client-tools.rpm
+  - rpm -i instant-client-tools.rpm
