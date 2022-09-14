@@ -51,13 +51,13 @@ resource "aws_db_proxy" "rds_proxy" {
     auth_scheme = "SECRETS"
     description = "Auth for the RDS instance with Id: ${aws_db_instance.rds_postgres_instance.id}"
     iam_auth    = var.rds_proxy_iam_auth
-    secret_arn  = aws_secretsmanager_secret.rds_admin_creds.arn
+    secret_arn  = aws_secretsmanager_secret.rds_postgres_admin_creds.arn
   }
 
   #  auth {
   #    description = "Auth for the RDS instance with Id: ${aws_db_instance.rds_postgres_instance.id}"
   #    iam_auth    = "DISABLED"
-  #    secret_arn  = aws_secretsmanager_secret.rds_admin_creds.arn
+  #    secret_arn  = aws_secretsmanager_secret.rds_postgres_admin_creds.arn
   #    username    = aws_db_instance.rds_postgres_instance.username
   #  }
 
