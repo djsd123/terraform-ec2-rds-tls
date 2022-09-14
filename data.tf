@@ -60,7 +60,7 @@ data "aws_iam_policy_document" "rds_proxy_policy" {
       "secretsmanager:ListSecretVersionIds",
     ]
 
-    resources = [aws_secretsmanager_secret.rds_admin_creds.arn]
+    resources = [aws_secretsmanager_secret.rds_postgres_admin_creds.arn]
   }
 }
 
