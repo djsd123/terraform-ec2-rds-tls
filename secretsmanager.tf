@@ -14,7 +14,7 @@ locals {
 }
 
 resource "aws_secretsmanager_secret" "rds_postgres_admin_creds" {
-  name        = "${var.name}-rds-postgres-instance"
+  name_prefix = "${var.name}-rds-postgres-instance-"
   description = "The admin credentials for the RDS Postgres instance with Id: ${aws_db_instance.rds_postgres_instance.id}"
 }
 
@@ -24,7 +24,7 @@ resource "aws_secretsmanager_secret_version" "rds_postgres_admin_creds_version" 
 }
 
 resource "aws_secretsmanager_secret" "rds_oracle_admin_creds" {
-  name        = "${var.name}-rds-oracle-instance"
+  name_prefix = "${var.name}-rds-oracle-instance-"
   description = "The admin credentials for the RDS Oracle instance with Id: ${aws_db_instance.rds_oracle_instance.id}"
 }
 

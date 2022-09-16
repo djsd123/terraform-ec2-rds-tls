@@ -21,7 +21,7 @@ POC for Ensuring TLS between Client and RDS Database
 ## Usage
 
 **note**
-Amend the state backend bucket value in [versions.tf](versions.tf), line 15 to your own state bucket
+Amend the state backend bucket value in [versions.tf](versions.tf), line 19 to your own state bucket
 
 Initialise [terraform]
 ```shell
